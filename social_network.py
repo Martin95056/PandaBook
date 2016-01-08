@@ -1,5 +1,6 @@
 from panda import Panda
 from collections import deque
+import json
 
 
 class SocialNetwork:
@@ -113,3 +114,16 @@ class SocialNetwork:
             return count_male
         if gender == "female":
             return count_female
+
+    def load():
+        with open('pandabook.json', 'r') as f:
+            data = json.load(f)
+        return data
+
+    def save():
+        data = self.load()
+
+        data.update(self.graph)
+
+        with open('pandabook.json', 'w') as f:
+            data = json.dump(data, f)
