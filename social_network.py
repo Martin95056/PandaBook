@@ -80,4 +80,3 @@ class SocialNetwork:
                 else:
                     return True
         return False
-
