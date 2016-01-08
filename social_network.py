@@ -115,15 +115,16 @@ class SocialNetwork:
         if gender == "female":
             return count_female
 
-    def load():
+    def load(self):
         with open('pandabook.json', 'r') as f:
             data = json.load(f)
+
         return data
 
-    def save():
+    def save(self):
         data = self.load()
 
         data.update(self.graph)
 
         with open('pandabook.json', 'w') as f:
-            data = json.dump(data, f)
+            json.dump(data, f)
