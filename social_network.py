@@ -91,7 +91,7 @@ class SocialNetwork:
         count_male = 0
         count_female = 0
 
-        my_level = 1
+        my_level = 0
 
         while len(queue) != 0:
             node = queue.popleft()
@@ -104,9 +104,9 @@ class SocialNetwork:
                         count_male += 1
                     if neighbour.isFemale():
                         count_female += 1
-                if level == my_level:
-                    return self.check_gender(gender, count_male, count_female)
-                my_level += 1
+            if level == my_level:
+                return self.check_gender(gender, count_male, count_female)
+            my_level += 1
 
     def check_gender(self, gender, count_male, count_female):
         if gender == "male":
