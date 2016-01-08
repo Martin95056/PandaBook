@@ -5,30 +5,58 @@ from panda import Panda
 
 class TestSocialNetwork(unittest.TestCase):
 
-	def test_social_network_add_panda(self):
-		pandabook = SocialNetwork()
-		ruja = Panda('Ruja', 'ruja@pandamail.com', 'female')
-		pandabook.add_panda(ruja)
+	def setUp(self):
+		self.pandabook = SocialNetwork()
+		self.ruja = Panda('Ruja', 'ruja@pandamail.com', 'female')
+		self.martin = Panda('Martin', 'martin@pandamail.com', 'male')
 
-		self.assertEqual(pandabook._get_graph()[ruja], set())
+	def test_social_network_add_panda(self):
+		self.pandabook.add_panda(self.ruja)
+
+		self.assertEqual(self.pandabook._get_graph()[self.ruja], set())
 
 	def test_social_network_has_panda(self):
-		pandabook = SocialNetwork()
-		ruja = Panda('Ruja', 'ruja@pandamail.com', 'female')
-		martin = Panda('Martin', 'martin@pandamail.com', 'male')
-		pandabook.add_panda(martin)
+		self.pandabook.add_panda(self.martin)
 
-		self.assertTrue(pandabook.has_panda(martin))
-		self.assertFalse(pandabook.has_panda(ruja))
+		self.assertTrue(self.pandabook.has_panda(self.martin))
+		self.assertFalse(self.pandabook.has_panda(self.ruja))
 
 	def test_social_network_make_friends(self):
-		pandabook = SocialNetwork()
-		ruja = Panda('Ruja', 'ruja@pandamail.com', 'female')
-		martin = Panda('Martin', 'martin@pandamail.com', 'male')
+		self.pandabook.make_friends(self.ruja, self.martin)
 
-		pandabook.make_friends(ruja, martin)
-		self.assertEqual(pandabook._get_graph()[ruja], {martin})
-		self.assertEqual(pandabook._get_graph()[martin], {ruja})
+		self.assertEqual(self.pandabook._get_graph()[self.ruja], {self.martin})
+		self.assertEqual(self.pandabook._get_graph()[self.martin], {self.ruja})
+
+	def test_social_netowrk_connection_level(self):
+		random = Panda("Random", "random@pandamail.com", "male")
+		random1 = Panda("Random1", "random1@pandamail.com", "male")
+		random2 = Panda("Random2", "random2@pandamail.com", "female")
+		random3 = Panda("Random3", "random3@pandamail.com", "female")
+
+		self.pandabook.make_friends(self.ruja, self.martin)
+		self.pandabook.make_friends(self.ruja, random)
+		self.pandabook.make_friends(self.martin, random1)
+		self.pandabook.make_friends(self.martin, random2)
+		self.pandabook.make_friends(random, random3)
+
+		self.assertEqual(self.pandabook.connection_level(self.ruja, random3), 2)
+
+		random_gay = Panda("RandomGay", "randomgay@pandamail.com", "female")
+		self.pandabook.add_panda(random_gay)
+
+		self.assertEqual(self.pandabook.connection_level(self.ruja, random_gay), -1)
+
+	def test_social_network_are_connected(self):
+		gosho = Panda("Gosho", "gosho@pandamail.com", "male")
+		krasi = Panda("Krasi", "krasi@pandamail.com", "female")
+
+		self.pandabook.make_friends(self.ruja, self.martin)
+		self.pandabook.make_friends(self.martin, gosho)
+
+		self.assertTrue(self.pandabook.are_connected(self.ruja, gosho))
+
+		self.assertFalse(self.pandabook.are_connected(self.ruja, krasi))
+
 
 
 if __name__ == '__main__':
