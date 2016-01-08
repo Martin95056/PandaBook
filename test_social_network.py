@@ -57,6 +57,21 @@ class TestSocialNetwork(unittest.TestCase):
 
 		self.assertFalse(self.pandabook.are_connected(self.ruja, krasi))
 
+	def test_social_network_how_many_gender_in_network(self):
+		random = Panda("Random", "random@pandamail.com", "male")
+		random1 = Panda("Random1", "random1@pandamail.com", "male")
+		random2 = Panda("Random2", "random2@pandamail.com", "female")
+		random3 = Panda("Random3", "random3@pandamail.com", "female")
+
+		self.pandabook.make_friends(self.ruja, self.martin)
+		self.pandabook.make_friends(self.ruja, random)
+		self.pandabook.make_friends(self.martin, random1)
+		self.pandabook.make_friends(self.martin, random2)
+		self.pandabook.make_friends(random, random3)
+
+		self.assertEqual(self.pandabook.how_many_gender_in_network(1, self.ruja, "male"), 2)
+		self.assertEqual(self.pandabook.how_many_gender_in_network(1, self.ruja, "female"), 1)
+		self.assertEqual(self.pandabook.how_many_gender_in_network(2, self.ruja, "male"), 3)
 
 
 if __name__ == '__main__':
