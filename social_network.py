@@ -36,12 +36,12 @@ class SocialNetwork:
     def friends_of(self, panda):
         if not self.has_panda(panda):
             return False
-        return list(self.graph[panda])
+        return self.graph[panda]
 
-    def connected_level(self, panda1, panda2):
-        return self.BFS_algo(panda1, panda2)
+    def connection_level(self, panda1, panda2):
+        return self.bfs_with_level(panda1, panda2)
 
-    def BFS_algo(self, panda1, panda2):
+    def bfs_with_level(self, panda1, panda2):
         queue = deque()
         visited = set()
 
@@ -56,25 +56,28 @@ class SocialNetwork:
             if node == panda2:
                 return level
 
-            for neighbour in self.graph[panda1]:
+            for neighbour in self.graph[node]:
                 if neighbour not in visited:
                     visited.add(neighbour)
                     queue.append((level + 1, neighbour))
         return -1
 
+    def are_connected(self, panda1, panda2):
+        queue = deque()
+        visited = set()
 
-network = SocialNetwork()
-ivo = Panda("Ivo", "ivo@pandamail.com", "male")
-rado = Panda("Rado", "rado@pandamail.com", "male")
-tony = Panda("Tony", "tony@pandamail.com", "female")
+        visited.add(panda1)
+        queue.append(panda1)
 
-for panda in [ivo, rado, tony]:
-    network.add_panda(panda)
+        while len(queue) != 0:
+            node = queue.popleft()
 
-network.make_friends(ivo, rado)
-network.make_friends(rado, tony)
+            for neighbour in self.graph[node]:
+                if neighbour != panda2:
+                    if neighbour not in visited:
+                        visited.add(neighbour)
+                        queue.append(neighbour)
+                else:
+                    return True
+        return False
 
-network.connected_level(ivo, rado) == 1  # True
-network.connected_level(ivo, tony) == 2  # True
-
-# network.how_many_gender_in_network(1, rado, "female") == 1 # True
