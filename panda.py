@@ -5,7 +5,10 @@ class Panda:
 		self.gender = gender
 
 	def __str__(self):
-		return self.name + ', ' + self.gender
+		return '{}, {}, {}'.format(self.name, self.email, self.gender)
+
+    #def __repr__(self):
+     #   return "Panda('{}', '{}', '{}')".format(self.name, self.email, self.gender)
 
 	def __eq__(self, other):
 		return self.name == other.name and self.email == other.email and self.gender == other.gender
@@ -29,5 +32,3 @@ class Panda:
 
 	def isFemale(self):
 		return self.gender == "female"
-
-

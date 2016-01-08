@@ -36,7 +36,7 @@ class SocialNetwork:
     def friends_of(self, panda):
         if not self.has_panda(panda):
             return False
-        return self.graph[panda]
+        return list(self.graph[panda])
 
     def connected_level(self, panda1, panda2):
         return self.BFS_algo(panda1, panda2)
