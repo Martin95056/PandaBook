@@ -39,6 +39,12 @@ class SocialNetwork:
             return False
         return self.graph[panda]
 
+    def dict_of_friends_of_panda(self, panda):
+        dict_friends = []
+        for friend in self.friends_of(panda):
+            dict_friends.append(friend.panda_to_dict())
+        return dict_friends
+
     def connection_level(self, panda1, panda2):
         return self.bfs_with_level(panda1, panda2)
 
@@ -123,8 +129,11 @@ class SocialNetwork:
 
     def save(self):
         data = self.load()
+        dict_graph = {}
+        for panda in self.graph:
+            dict_graph[panda.panda_to_dict()] = self.dict_of_friends_of_panda(panda)
 
-        data.update(self.graph)
+        data.update(dict_graph)
 
         with open('pandabook.json', 'w') as f:
-            json.dump(data, f)
+            json.dump(data, f, indent=4, sort_keys=True)
