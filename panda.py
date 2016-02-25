@@ -1,37 +1,37 @@
 class Panda:
     def __init__(self, name, email, gender):
-        self.name = name
-        self.email = email
-        self.gender = gender
+        self.__name = name
+        self.__email = email
+        self.__gender = gender
 
     def __str__(self):
-        return '{}, {}, {}'.format(self.name, self.email, self.gender)
+        return '{}, {}, {}'.format(self.__name, self.__email, self.__gender)
 
         #def __repr__(self):
         #   return "Panda('{}', '{}', '{}')".format(self.name, self.email, self.gender)
 
     def __eq__(self, other):
-        return self.name == other.name and self.email == other.email and self.gender == other.gender
+        return self.__name == other.__name and self.__email == other.__email and self.__gender == other.__gender
 
     def __hash__(self):
-        return hash(self.name + 'pandapanda')
+        return hash(self.__name + 'pandapanda')
 
     def name(self):
-        return self.name
+        return self.__name
 
     def email(self):
-        if self.email.split('@')[1] == 'pandamail.com':
-            return self.email
+        if self.__email.split('@')[1] == 'pandamail.com':
+            return self.__email
         return False
 
     def gender(self):
-        return self.gender
+        return self.__gender
 
     def isMale(self):
-        return self.gender == "male"
+        return self.__gender == "male"
 
     def isFemale(self):
-        return self.gender == "female"
+        return self.__gender == "female"
 
     def panda_to_dict(self):
         return str(self.__dict__)
