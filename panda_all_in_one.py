@@ -1,6 +1,44 @@
-from panda import Panda
 from collections import deque
 import json
+
+
+class Panda:
+    def __init__(self, name, email, gender):
+        self.__name = name
+        self.__email = email
+        self.__gender = gender
+
+    def __str__(self):
+        return '{}, {}, {}'.format(self.__name, self.__email, self.__gender)
+
+        #def __repr__(self):
+        #   return "Panda('{}', '{}', '{}')".format(self.name, self.email, self.gender)
+
+    def __eq__(self, other):
+        return self.__name == other.__name and self.__email == other.__email and self.__gender == other.__gender
+
+    def __hash__(self):
+        return hash(self.__name + 'pandapanda')
+
+    def name(self):
+        return self.__name
+
+    def email(self):
+        if self.__email.split('@')[1] == 'pandamail.com':
+            return self.__email
+        return False
+
+    def gender(self):
+        return self.__gender
+
+    def isMale(self):
+        return self.__gender == "male"
+
+    def isFemale(self):
+        return self.__gender == "female"
+
+    def panda_to_dict(self):
+        return str(self.__dict__)
 
 
 class PandaSocialNetwork:
@@ -138,3 +176,35 @@ class PandaSocialNetwork:
         with open('pandabook.json', 'w') as f:
             json.dump(data, f, indent=4, sort_keys=True)
 
+
+def main():
+    pandabook = PandaSocialNetwork()
+    martin = Panda("Martin", "martin@pandamail.com", "male")
+    rado = Panda("Rado", "rado@pandamail.com", "male")
+    lubo = Panda("Lubo", "lubo@pandamail.com", "male")
+    dimitar = Panda("Dimitar", "dimitar@pandamail.com", "male")
+    stanislav = Panda("Stanislav", "stanislav@pandamail.com", "male")
+    denitsa = Panda("Denitsa", "denitsa@pandamail.com", "female")
+    zornitsa = Panda("Zornitsa", "zornitsa@pandamail.com", "female")
+    iva = Panda("Iva", "iva@pandamail.com", "female")
+    dora = Panda("Dora", "dora@pandamail.com", "female")
+    aneliya = Panda("Aneliya", "aneliya@pandamail.com", "female")
+
+    pandabook.make_friends(martin, lubo)
+    pandabook.make_friends(martin, rado)
+    pandabook.make_friends(rado, denitsa)
+    pandabook.make_friends(rado, dimitar)
+    pandabook.make_friends(denitsa, zornitsa)
+    pandabook.make_friends(denitsa, iva)
+    pandabook.make_friends(denitsa, dora)
+    pandabook.make_friends(lubo, dimitar)
+    pandabook.make_friends(lubo, stanislav)
+    pandabook.make_friends(stanislav, aneliya)
+
+    pandabook.save()
+
+    a = pandabook.how_many_gender_in_network(3, martin, 'male')
+    print(a)
+
+if __name__ == '__main__':
+    main()
