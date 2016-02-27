@@ -1,0 +1,42 @@
+{
+    "{'name': 'Aneliya', 'email': 'aneliya@pandamail.com', 'gender': 'female'}": [
+        "{'name': 'Stanislav', 'email': 'stanislav@pandamail.com', 'gender': 'male'}"
+    ],
+    "{'name': 'Denitsa', 'email': 'denitsa@pandamail.com', 'gender': 'female'}": [
+        "{'name': 'Dora', 'email': 'dora@pandamail.com', 'gender': 'female'}",
+        "{'name': 'Rado', 'email': 'rado@pandamail.com', 'gender': 'male'}",
+        "{'name': 'Iva', 'email': 'iva@pandamail.com', 'gender': 'female'}",
+        "{'name': 'Zornitsa', 'email': 'zornitsa@pandamail.com', 'gender': 'female'}"
+    ],
+    "{'name': 'Dimitar', 'email': 'dimitar@pandamail.com', 'gender': 'male'}": [
+        "{'name': 'Rado', 'email': 'rado@pandamail.com', 'gender': 'male'}",
+        "{'name': 'Lubo', 'email': 'lubo@pandamail.com', 'gender': 'male'}"
+    ],
+    "{'name': 'Dora', 'email': 'dora@pandamail.com', 'gender': 'female'}": [
+        "{'name': 'Denitsa', 'email': 'denitsa@pandamail.com', 'gender': 'female'}"
+    ],
+    "{'name': 'Iva', 'email': 'iva@pandamail.com', 'gender': 'female'}": [
+        "{'name': 'Denitsa', 'email': 'denitsa@pandamail.com', 'gender': 'female'}"
+    ],
+    "{'name': 'Lubo', 'email': 'lubo@pandamail.com', 'gender': 'male'}": [
+        "{'name': 'Martin', 'email': 'martin@pandamail.com', 'gender': 'male'}",
+        "{'name': 'Stanislav', 'email': 'stanislav@pandamail.com', 'gender': 'male'}",
+        "{'name': 'Dimitar', 'email': 'dimitar@pandamail.com', 'gender': 'male'}"
+    ],
+    "{'name': 'Martin', 'email': 'martin@pandamail.com', 'gender': 'male'}": [
+        "{'name': 'Rado', 'email': 'rado@pandamail.com', 'gender': 'male'}",
+        "{'name': 'Lubo', 'email': 'lubo@pandamail.com', 'gender': 'male'}"
+    ],
+    "{'name': 'Rado', 'email': 'rado@pandamail.com', 'gender': 'male'}": [
+        "{'name': 'Martin', 'email': 'martin@pandamail.com', 'gender': 'male'}",
+        "{'name': 'Dimitar', 'email': 'dimitar@pandamail.com', 'gender': 'male'}",
+        "{'name': 'Denitsa', 'email': 'denitsa@pandamail.com', 'gender': 'female'}"
+    ],
+    "{'name': 'Stanislav', 'email': 'stanislav@pandamail.com', 'gender': 'male'}": [
+        "{'name': 'Aneliya', 'email': 'aneliya@pandamail.com', 'gender': 'female'}",
+        "{'name': 'Lubo', 'email': 'lubo@pandamail.com', 'gender': 'male'}"
+    ],
+    "{'name': 'Zornitsa', 'email': 'zornitsa@pandamail.com', 'gender': 'female'}": [
+        "{'name': 'Denitsa', 'email': 'denitsa@pandamail.com', 'gender': 'female'}"
+    ]
+}
